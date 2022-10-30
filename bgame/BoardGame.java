@@ -9,24 +9,36 @@ public class BoardGame implements Manageable {
 	String level;
 	String genre;
 	String explain;
-	//설명 길면 txt 파일로 받아도 될 듯? or 0 입력하기 전까지 모두 입력받기
-	// ㄴ ex) (설명 블라블라~ 0)
 	
 	@Override
-	public void read(Scanner scan) {
-		// TODO Auto-generated method stub
-		
+	public void read(Scanner sc) {
+		String temp1 = null;
+		String temp2 = null;
+		name = sc.next();
+		level = sc.next();
+		while (true) {
+			temp1 = sc.next();
+			if (temp1.equals("0"))
+				break;
+			genre = genre + " " + temp1;
+		}
+		while (true) {
+			temp2 = sc.next();
+			if (temp2.equals("0"))
+				break;
+			explain = explain + " " + temp2;
+		}
 	}
 
 	@Override
 	public void print() {
-		// TODO Auto-generated method stub
-		
+		System.out.format("보드게임 이름 : %s (난이도 : %s, 장르 : %s)\n", name, level, genre);
+		System.out.format("[게임 방법] - %s\n",explain);
 	}
 
 	@Override
 	public boolean matches(String kwd) {
-		// TODO Auto-generated method stub
+		if(name.contains(kwd) || level.equals(kwd) || genre.contains(kwd)) return true;
 		return false;
 	}
 	
