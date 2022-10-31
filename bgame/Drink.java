@@ -9,19 +9,18 @@ public class Drink implements Manageable {
 	int price;
 	
 	@Override
-	public void read(Scanner sc) {
-		name = sc.next();
-		price = sc.nextInt();
+	public void read(Scanner scan) {
+		name = scan.next();
+		price = scan.nextInt();
 	}
-
+	
 	@Override
 	public void print() {
-		System.out.format("%s - %dø¯\n", name, price);
+		System.out.format("<%s>/t %dÏõê", name, price);
 	}
-
+	
 	@Override
-	public boolean matches(String kwd) {
-		if(name.contains(kwd)) return true;
-		return false;
+	public boolean matches(String keyword) {
+		return (name.contains(keyword) || (price + "").contains(keyword));
 	}
 }
